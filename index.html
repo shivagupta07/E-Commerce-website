@@ -27,32 +27,158 @@
                 <img src="https://www.apple.com/v/apple-vision-pro/a/images/overview/hero/apple_vision_pro_logo__ux94yix23r6y_large.png" alt="">
             </div>
         </div>
+    </head>
+    <body>
+        <!-- Filter and Sort Options -->
+<div class="filter-sort-container">
+    <div class="filter-sort">
+        <label for="sort"><i class="fas fa-sort"></i> Sort by:</label>
+        <select id="sort" class="custom-select">
+            <option value="name">Name</option>
+            <option value="price">Price</option>
+            <option value="rating">Rating</option>
+        </select>
+    </div>
+
+    <div class="filter-sort">
+        <label for="filter-category"><i class="fas fa-filter"></i> Filter by category:</label>
+        <select id="filter-category" class="custom-select">
+            <option value="all">All</option>
+            <option value="charger">Charger</option>
+            <option value="band">Band</option>
+            <option value="headset">Headset</option>
+            <option value="lenses">Lenses</option>
+        </select>
+    </div>
+</div>
+
         <!-- Product Page -->
         <div id="product-page">
             <h1>Our Products</h1>
-            <div class="product-container">
-                <div class="product-item">
+            <div class="product-container" id="products">
+                <!-- Product 1 -->
+                <div class="product-item" data-category="headset" data-price="$3499" data-rating="5">
                     <img src="product1.jpg" alt="Product 1">
-                    <h2>Apple vision pro</h2>
-                    <p>he Apple Vision Pro is a mixed-reality headset developed by Apple. It was announced on June 5, 2023, at Apple's Worldwide Developers Conference, and pre-orders began on January 19, 2024</p>
+                    <h2>Apple Vision Pro</h2>
+                    <p>The Apple Vision Pro is a mixed-reality headset developed by Apple.</p>
+                    <p>Price: $3499</p>
+                    <div class="star-rating">
+                        <input type="radio" name="rating1" id="rating1-5" value="5"><label for="rating1-5">★</label>
+                        <input type="radio" name="rating1" id="rating1-4" value="4"><label for="rating1-4">★</label>
+                        <input type="radio" name="rating1" id="rating1-3" value="3"><label for="rating1-3">★</label>
+                        <input type="radio" name="rating1" id="rating1-2" value="2"><label for="rating1-2">★</label>
+                        <input type="radio" name="rating1" id="rating1-1" value="1"><label for="rating1-1">★</label>
+                   
+                    </div>
                     <button>Buy Now</button>
+                    <!-- cart-->
+                     <button class="add-to-cart">Add to Cart</button>
                 </div>
-                <div class="product-item">
+    
+                <!-- Product 2 -->
+                <div class="product-item" data-category="charger" data-price="$199" data-rating="4">
                     <img src="product2.jpg" alt="Product 2">
-                    <h2>Apple Vision charger</h2>
-                    <p>Apple vision portable charger 30w</p>
+                    <h2>Apple Vision Battery</h2>
+                    <p>Apple Vision Pro battery.</p>
+                    <p>Price: $199</p>
+                    <div class="star-rating">
+                        <input type="radio" name="rating2" id="rating2-5" value="5"><label for="rating2-5">★</label>
+                        <input type="radio" name="rating2" id="rating2-4" value="4"><label for="rating2-4">★</label>
+                        <input type="radio" name="rating2" id="rating2-3" value="3"><label for="rating2-3">★</label>
+                        <input type="radio" name="rating2" id="rating2-2" value="2"><label for="rating2-2">★</label>
+                        <input type="radio" name="rating2" id="rating2-1" value="1"><label for="rating2-1">★</label>
+                    </div>
                     <button>Buy Now</button>
-                </div>
-                <div class="product-item">
+                        <!-- cart-->
+                 <!-- cart-->
+                 <button class="add-to-cart">Add to Cart</button>
+                   </div>
+    
+                <!-- Product 3 -->
+                <div class="product-item" data-category="band" data-price="$99" data-rating="3">
                     <img src="product3.jpg" alt="Product 3">
-                    <h2>Apple vision Band</h2>
-                    <p>Apple vision replaceable Band</p>
+                    <h2>Apple Vision Knit Band</h2>
+                    <p>Apple Vision Replaceable Band.</p>
+                    <p>Price: $99</p>
+                    <div class="star-rating">
+                        <input type="radio" name="rating3" id="rating3-5" value="5"><label for="rating3-5">★</label>
+                        <input type="radio" name="rating3" id="rating3-4" value="4"><label for="rating3-4">★</label>
+                        <input type="radio" name="rating3" id="rating3-3" value="3"><label for="rating3-3">★</label>
+                        <input type="radio" name="rating3" id="rating3-2" value="2"><label for="rating3-2">★</label>
+                        <input type="radio" name="rating3" id="rating3-1" value="1"><label for="rating3-1">★</label>
+                    </div>
                     <button>Buy Now</button>
+                     <!-- cart-->
+                     <button class="add-to-cart">Add to Cart</button>
                 </div>
-                <!-- Add more products as needed -->
+    
+
+
+                <!-- Product 4 -->
+                <div class="product-item" data-category="lenses" data-price="$99" data-rating="3">
+                    <img src="product4.jpg" alt="Product 4">
+                    <h2>Apple Vision ZEISS optical Inserts</h2>
+                    <p>Apple ZEISS optical Inserts.</p>
+                    <p>Price: $99</p>
+                    <div class="star-rating">
+                        <input type="radio" name="rating3" id="rating3-5" value="5"><label for="rating3-5">★</label>
+                        <input type="radio" name="rating3" id="rating3-4" value="4"><label for="rating3-4">★</label>
+                        <input type="radio" name="rating3" id="rating3-3" value="3"><label for="rating3-3">★</label>
+                        <input type="radio" name="rating3" id="rating3-2" value="2"><label for="rating3-2">★</label>
+                        <input type="radio" name="rating3" id="rating3-1" value="1"><label for="rating3-1">★</label>
+                    </div>
+                    <button>Buy Now</button>
+                     <!-- cart-->
+                     <button class="add-to-cart">Add to Cart</button>
             </div>
         </div>
+
         
+        <!-- JavaScript for Sorting, Filtering, and Ratings -->
+        <script>
+            const products = document.querySelectorAll('.product-item');
+            const sortSelect = document.getElementById('sort');
+            const filterSelect = document.getElementById('filter-category');
+    
+            // Sorting functionality
+            sortSelect.addEventListener('change', () => {
+                const sortBy = sortSelect.value;
+                const productArray = Array.from(products);
+                productArray.sort((a, b) => {
+                    if (sortBy === 'price') {
+                        return a.getAttribute('data-price') - b.getAttribute('data-price');
+                    } else if (sortBy === 'rating') {
+                        return b.getAttribute('data-rating') - a.getAttribute('data-rating');
+                    } else {
+                        return a.querySelector('h2').textContent.localeCompare(b.querySelector('h2').textContent);
+                    }
+                });
+                const container = document.getElementById('products');
+                container.innerHTML = '';
+                productArray.forEach(product => container.appendChild(product));
+            });
+    
+            // Filtering functionality
+            filterSelect.addEventListener('change', () => {
+                const filterCategory = filterSelect.value;
+                products.forEach(product => {
+                    if (filterCategory === 'all' || product.getAttribute('data-category') === filterCategory) {
+                        product.style.display = 'block';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+            });
+    
+            // Star rating system (you can customize how you handle the ratings here)
+            document.querySelectorAll('.star-rating input').forEach(radio => {
+                radio.addEventListener('change', (event) => {
+                    const ratingValue = event.target.value;
+                    alert(`You rated this product ${ratingValue} stars!`);
+                    // Here you can add code to submit the rating to your backend
+                });
+            });
+        </script>
 
         <div id="page1">
             <h1>Welcome to the era of spatial computing</h1>
@@ -175,24 +301,24 @@
         <h2>Register or Login</h2>
         <form id="registrationForm">
             <div class="form-group">
-                <label for="username">Username:</label>
+                <label1 for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
             </div>
     
             <div class="form-group">
-                <label for="email">Email:</label>
+                <label1 for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
             </div>
     
             <div class="form-group">
-                <label for="password">Password:</label>
+                <label1 for="password">Password:</label>
                 <input type="password" id="password" name="password" required
                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                        title="Must contain at least one number, one uppercase and lowercase letter, and at least 8 or more characters">
             </div>
     
             <div class="form-group">
-                <label for="confirm-password">Confirm Password:</label>
+                <label1 for="confirm-password">Confirm Password:</label>
                 <input type="password" id="confirm-password" name="confirm-password" required>
             </div>
     
@@ -207,24 +333,21 @@
     <p id="error-message" style="color: red; display: none;">Passwords do not match.</p>
 </div>
 
-<script>
-    // Password confirmation validation
-    document.getElementById('registrationForm').addEventListener('submit', function (event) {
-        let password = document.getElementById('password').value;
-        let confirmPassword = document.getElementById('confirm-password').value;
+<!-- Footer Section -->
+<footer style="background-color: #222; color: white; padding: 20px 0; text-align: center; font-family: Arial, sans-serif;">
+    
+    <div style="margin-bottom: 10px;">
+        <p style="margin: 5px 0;">&copy; 2024 Shiva gupta. All Rights Reserved.</p>
+        <p style="margin: 5px 0;">Sage university Indore 452020</p>
+        <p style="margin: 5px 0;">Phone: +917471139827 | Email: shivagupta1027@gmail.com</p>
+    </div>
 
-        if (password !== confirmPassword) {
-            event.preventDefault();  // Prevent form submission
-            document.getElementById('error-message').style.display = 'block';
-        } else {
-            document.getElementById('error-message').style.display = 'none';
-        }
-    });
-
-    // Login function for demonstration
-    function login() {
-        alert('Login functionality to be implemented');
-    }
-</script>
+    <div style="margin-bottom: 10px;">
+        <a href="https://www.facebook.com" style="color: white; margin: 0 10px; text-decoration: none;">Facebook</a>
+        <a href="https://www.twitter.com" style="color: white; margin: 0 10px; text-decoration: none;">Twitter</a>
+        <a href="https://www.instagram.com" style="color: white; margin: 0 10px; text-decoration: none;">Instagram</a>
+        <a href="https://www.linkedin.com" style="color: white; margin: 0 10px; text-decoration: none;">LinkedIn</a>
+    </div>
+</footer>
 </body>
 </html>

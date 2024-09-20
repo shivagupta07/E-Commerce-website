@@ -86,6 +86,22 @@ tl.to("#page1>h1",{
 
 
 
+  // Add event listeners to all 'Add to Cart' buttons
+  document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', function() {
+      // Add the 'pulse-effect' class to trigger animation
+      button.classList.add('pulse-effect');
+      
+      // Remove the class after the animation ends
+      setTimeout(() => {
+        button.classList.remove('pulse-effect');
+      }, 300); // Match the duration of the animation (0.3s)
+    });
+  });
+
+
+
+
 
 
 
@@ -568,3 +584,21 @@ gsap.to("#page23>img",{
   },
   opacity:1
 })
+
+    // Password confirmation validation
+    document.getElementById('registrationForm').addEventListener('submit', function (event) {
+        let password = document.getElementById('password').value;
+        let confirmPassword = document.getElementById('confirm-password').value;
+
+        if (password !== confirmPassword) {
+            event.preventDefault();  // Prevent form submission
+            document.getElementById('error-message').style.display = 'block';
+        } else {
+            document.getElementById('error-message').style.display = 'none';
+        }
+    });
+
+    // Login function for demonstration
+    function login() {
+        alert('Login functionality to be implemented');
+    }

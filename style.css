@@ -142,12 +142,237 @@ body {
     white-space: nowrap;
 }
 
+/* Styling for the product container */
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.product-item {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: white;
+    overflow: hidden;
+}
+
+.product-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Zoom and shadow effect on hover */
+.product-item:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3); /* Elevate box on hover */
+    cursor: pointer;
+}
+
+.product-item h2 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.product-item p {
+    color: #555;
+}
+
+.star-rating label {
+    color: gold;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3; /* Button color changes on hover */
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .add-to-cart.pulse-effect {
+    animation: pulse 0.3s ease;
+  }
+  
+
+
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+.filter-sort-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #6dd5fa, #2980b9); /* Gradient background */
+    border-radius: 15px; /* Rounded container */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Shadow effect */
+    margin-bottom: 20px;
+    transition: transform 0.3s ease; /* Smooth scaling on hover */
+}
+
+.filter-sort-container:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+}
+
+.filter-sort {
+    display: flex;
+    align-items: center;
+}
+
+label {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #ffffff; /* White label text */
+    font-size: 1.1rem; /* Slightly larger font */
+    display: flex;
+    align-items: center;
+}
+
+label i {
+    margin-right: 5px;
+    font-size: 1.2rem; /* Icon size */
+}
+
+.custom-select {
+    padding: 12px 20px; /* Padding for custom select */
+    border: none;
+    border-radius: 30px; /* Rounded select box */
+    background-color: #fff; /* White background for select box */
+    color: #555; /* Grey text */
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.4s ease; /* Smooth transition for hover effect */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Slight shadow for select box */
+}
+
+.custom-select:hover, .custom-select:focus {
+    background-color: #eef2f3; /* Light grey background on hover */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4); /* Glowing effect on hover */
+    outline: none; /* Remove default outline */
+}
+
+.custom-select option {
+    padding: 10px;
+}
+
+/* Space between the elements */
+.filter-sort-container .custom-select {
+    margin-right: 20px;
+}
+
+.filter-sort-container:hover {
+    background-color: #2c3e50; /* Change background color on container hover */
+}
+
+
+
+   /* General product styling */
+.product-item {
+    margin-bottom: 30px;
+    text-align: center; /* Center all content in the product item */
+}
+
+.product-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.product-item h2 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.product-item p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Centering the star rating */
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center; /* Center horizontally */
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+/* Hover and active effects */
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: gold;
+}
+
+.star-rating input:checked + label:hover,
+.star-rating input:checked ~ label:hover,
+.star-rating input:checked ~ label:hover ~ label {
+    color: gold;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #1b5f89;
+}
+
+
 
 #page2{
     position: relative;
     height: 100vh;
     width: 100vw;
 }
+
 #page2>video{
     height: 100%;
     width: 100%;
@@ -170,21 +395,6 @@ body {
     text-align: center;
 }
 
-.product-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
-    gap: 20px; /* Adds space between the cards */
-    margin-top: 20px;
-}
-
-.product-item {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 
 .product-item img {
     max-width: 100%;
@@ -215,6 +425,41 @@ body {
 .product-item button:hover {
     background-color: #216788;
 }
+
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container for all products */
+.product-container {
+    display: flex;                /* Flexbox layout */
+    flex-wrap: wrap;              /* Allows items to wrap on small screens */
+    justify-content: space-between; /* Space between products */
+    padding: 20px;
+}
+
+/* Each product item */
+.product-item {
+    flex: 1 1 200px;              /* Flex-grow, flex-shrink, and minimum width of each product */
+    margin: 10px;                 /* Adds margin between items */
+    padding: 20px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .product-item {
+        flex: 1 1 100%;            /* On smaller screens, each item will take the full width */
+    }
+}
+
 
 
 
@@ -804,3 +1049,4 @@ body {
         margin: 10px 0;
     }
 }
+
