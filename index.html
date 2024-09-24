@@ -11,24 +11,25 @@
      <nav>
                 <h3>Vision Pro</h3>
                 <ul>
-                    <li><a href="#home">Home</a></li>
+                    <li><a href="#home-page">Home</a></li>
                     <li><a href="#product-page">Products</a></li>
                     <li><a href="#about-us-page">About Us</a></li>
                     <li><a href="#contact-page">Contact</a></li>
-                </ul>
+                    <li><a href="order.html">Orders</a></li> <!-- Added Order link -->
+                </ul>         
+
             </nav>
-            <div id="main">
+          <div id="main">
                 <div id="page">
                     <video src="https://www.apple.com/105/media/us/apple-vision-pro/2023/7e268c13-eb22-493d-a860-f0637bacb569/anim/hero/large_2x.mp4" muted ></video>
-                  
-           
-            <div id="page-bottom">
+       
+                    <div id="page-bottom">
                 <h3>Introduction</h3>
                 <img src="https://www.apple.com/v/apple-vision-pro/a/images/overview/hero/apple_vision_pro_logo__ux94yix23r6y_large.png" alt="">
-            </div>
+            </div>  
         </div>
     </head>
-    <body>
+    <body> 
         <!-- Filter and Sort Options -->
 <div class="filter-sort-container">
     <div class="filter-sort">
@@ -57,7 +58,7 @@
             <h1>Our Products</h1>
             <div class="product-container" id="products">
                 <!-- Product 1 -->
-                <div class="product-item" data-category="headset" data-price="$3499" data-rating="5">
+                <div class="product-item" data-id="1" data-category="headset" data-price="$3499" data-rating="5">
                     <img src="product1.jpg" alt="Product 1">
                     <h2>Apple Vision Pro</h2>
                     <p>The Apple Vision Pro is a mixed-reality headset developed by Apple.</p>
@@ -74,9 +75,9 @@
                     <!-- cart-->
                      <button class="add-to-cart">Add to Cart</button>
                 </div>
-    
+
                 <!-- Product 2 -->
-                <div class="product-item" data-category="charger" data-price="$199" data-rating="4">
+                <div class="product-item" data-id="2" data-category="charger" data-price="$199" data-rating="4">
                     <img src="product2.jpg" alt="Product 2">
                     <h2>Apple Vision Battery</h2>
                     <p>Apple Vision Pro battery.</p>
@@ -95,7 +96,7 @@
                    </div>
     
                 <!-- Product 3 -->
-                <div class="product-item" data-category="band" data-price="$99" data-rating="3">
+                <div class="product-item" data-id="3" data-category="band" data-price="$99" data-rating="3">
                     <img src="product3.jpg" alt="Product 3">
                     <h2>Apple Vision Knit Band</h2>
                     <p>Apple Vision Replaceable Band.</p>
@@ -112,10 +113,8 @@
                      <button class="add-to-cart">Add to Cart</button>
                 </div>
     
-
-
                 <!-- Product 4 -->
-                <div class="product-item" data-category="lenses" data-price="$99" data-rating="3">
+                <div class="product-item" data-id="4" data-category="lenses" data-price="$99" data-rating="3">
                     <img src="product4.jpg" alt="Product 4">
                     <h2>Apple Vision ZEISS optical Inserts</h2>
                     <p>Apple ZEISS optical Inserts.</p>
@@ -130,10 +129,49 @@
                     <button>Buy Now</button>
                      <!-- cart-->
                      <button class="add-to-cart">Add to Cart</button>
-            </div>
+                                   </div>
         </div>
-
         
+<!--Shopping cart-->
+        <div id="cart-container" class="cart-container">
+            <h2 class="cart-title">Shopping Cart</h2>
+            <ul id="cart-items" class="cart-items">
+                <li class="empty-cart-message">Your cart is empty.</li>
+            </ul>
+            <button onclick="goToPage2()"class="checkout-button">Proceed to Checkout</button>
+        </div>
+        <script>
+            function goToPage2() {
+                window.location.href = "checkout.html"; // Redirects to Page 2
+            }
+        </script>
+
+
+<script>
+    let totalAmount = 0;
+
+    // Function to go to the checkout page with the total amount
+    function goToPage2() {
+        // Redirect to checkout with the total amount in the URL
+        window.location.href = `checkout.html?amount=${totalAmount}`;
+    }
+
+    // Add to cart functionality
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', function() {
+            const price = parseFloat(button.closest('.product-item').getAttribute('data-price').replace('$', ''));
+            
+            // Add item price to the total amount
+            totalAmount += price;
+            
+            // Mark item as added to the cart
+            button.classList.add('in-cart');
+            
+            alert(`Item added to cart. Total: $${totalAmount}`);
+        });
+    });
+</script>
+
         <!-- JavaScript for Sorting, Filtering, and Ratings -->
         <script>
             const products = document.querySelectorAll('.product-item');
@@ -286,8 +324,10 @@
        <div id="page21">
         <img id="troff" src="https://www.apple.com/v/apple-vision-pro/a/images/overview/technology/features/eye_tracking_off__fx6m2dj3mlqq_large.jpg" alt="">
         <img id="tron" src="https://www.apple.com/v/apple-vision-pro/a/images/overview/technology/features/eye_tracking_on__ln11reqs6mi6_large.jpg" alt="">
-       </div>
+      
+    </div>
        <div id="page22">
+        <img src="chip.jpg" alt="">
         <img id="snroff" src="https://www.apple.com/v/apple-vision-pro/a/images/overview/technology/features/sensors_off__cfzcmow4c3f6_large.jpg" alt="">
         <img id="snron" src="https://www.apple.com/v/apple-vision-pro/a/images/overview/technology/features/sensors_all__dp0a8e4y4u4i_large.jpg" alt="">
        </div>
@@ -296,7 +336,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollTrigger.min.js" integrity="sha512-IHDCHrefnBT3vOCsvdkMvJF/MCPz/nBauQLzJkupa4Gn4tYg5a6VGyzIrjo6QAUy3We5HFOZUlkUpP0dkgE60A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="script.js"></script>
 
-  
+
     <div id="form-section">
         <h2>Register or Login</h2>
         <form id="registrationForm">
@@ -328,21 +368,120 @@
             </div>
         </form>
     </div>
-    
+
     <!-- Error Message -->
     <p id="error-message" style="color: red; display: none;">Passwords do not match.</p>
-</div>
+   
+    <a href="chatbot.html" class="chat-link">
+        <span>💬</span> Chat with Us
+    </a>
+    
+    <style>
+        .chat-link {
+            display: inline-block;
+            background-color: #007bff; /* Bootstrap Primary Color */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+    
+        .chat-link:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+            transform: translateY(-3px); /* Lift effect */
+        }
+    
+        .chat-link span {
+            margin-right: 5px; /* Spacing between icon and text */
+        }
+    </style>
 
 <!-- Footer Section -->
 <footer style="background-color: #222; color: white; padding: 20px 0; text-align: center; font-family: Arial, sans-serif;">
     
     <div style="margin-bottom: 10px;">
-        <p style="margin: 5px 0;">&copy; 2024 Shiva gupta. All Rights Reserved.</p>
+        <p style="margin: 5px 0;">&copy; 2024 Shiva gupta. All Rights Reserved.</p> 
         <p style="margin: 5px 0;">Sage university Indore 452020</p>
         <p style="margin: 5px 0;">Phone: +917471139827 | Email: shivagupta1027@gmail.com</p>
     </div>
+    <title>Visitor Analytics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .analytics-container {
+            margin: 20px;
+        }
+        h1 {
+            color: #424242;
+        }
+    </style>
+</head>
+<body>
+    <div class="analytics-container">
+        <h1>Website Visitor Analytics</h1>
+        <p id="unique-visitors">Unique Visitors: 0</p>
+        <p id="frequent-visitors">Frequent Visitors (More than 5 visits): 0</p>
+        <h2>Visitor Details:</h2>
+        <ul id="visitor-list"></ul>
+    </div>
 
-    <div style="margin-bottom: 10px;">
+    <script>
+        // Function to get a unique visitor ID
+        function getVisitorId() {
+            if (!localStorage.getItem('visitorId')) {
+                localStorage.setItem('visitorId', Math.random().toString(36).substr(2, 9)); // generate unique ID
+            }
+            return localStorage.getItem('visitorId');
+        }
+
+        // Function to track the number of visits
+        function trackVisits() {
+            const visitorId = getVisitorId();
+            let visits = JSON.parse(localStorage.getItem('visits')) || {};
+            const currentTime = new Date().toLocaleString();
+
+            if (!visits[visitorId]) {
+                visits[visitorId] = { count: 1, timestamps: [currentTime] };
+            } else {
+                visits[visitorId].count += 1;
+                visits[visitorId].timestamps.push(currentTime);
+            }
+
+            localStorage.setItem('visits', JSON.stringify(visits));
+            return visits;
+        }
+
+        // Function to generate a report
+        function generateReport(visits) {
+            const uniqueVisitors = Object.keys(visits).length;
+            let frequentVisitors = 0;
+
+            const visitorList = document.getElementById('visitor-list');
+            visitorList.innerHTML = '';
+
+            Object.keys(visits).forEach(visitor => {
+                const visitData = visits[visitor];
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `Visitor ID: ${visitor}, Visits: ${visitData.count}, Timestamps: ${visitData.timestamps.join(', ')}`;
+                visitorList.appendChild(listItem);
+
+                if (visitData.count > 5) {
+                    frequentVisitors += 1;
+                }
+            });
+
+            document.getElementById('unique-visitors').innerText = `Unique Visitors: ${uniqueVisitors}`;
+            document.getElementById('frequent-visitors').innerText = `Frequent Visitors (More than 5 visits): ${frequentVisitors}`;
+        }
+
+        // Track and display visitor data
+        const visits = trackVisits();
+        generateReport(visits);
+    </script>
+    <div style="margin-bottom: 15px;">
         <a href="https://www.facebook.com" style="color: white; margin: 0 10px; text-decoration: none;">Facebook</a>
         <a href="https://www.twitter.com" style="color: white; margin: 0 10px; text-decoration: none;">Twitter</a>
         <a href="https://www.instagram.com" style="color: white; margin: 0 10px; text-decoration: none;">Instagram</a>

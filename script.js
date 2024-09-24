@@ -84,6 +84,84 @@ tl.to("#page1>h1",{
     top:`-50%`
 })
 
+// JavaScript for Shopping Cart
+
+// Get the cart button and cart list elements
+const cartButton = document.querySelectorAll('.add-to-cart');
+const cartList = document.getElementById('cart-items');
+
+// Initialize cart as an empty array
+let cart = [];
+
+// Add event listener to all 'Add to Cart' buttons
+cartButton.forEach(button => {
+    button.addEventListener('click', (event) => {
+        const product = event.target.closest('.product-item');
+        const productId = product.getAttribute('data-id');
+        const productName = product.querySelector('h2').textContent;
+        const productPrice = product.getAttribute('data-price');
+        
+        // Check if product already in cart
+        const existingProduct = cart.find(item => item.id === productId);
+
+        if (existingProduct) {
+            // If product already exists, increase quantity
+            existingProduct.quantity += 1;
+        } else {
+            // If product doesn't exist, add it to cart
+            cart.push({
+                id: productId,
+                name: productName,
+                price: parseFloat(productPrice.replace('$', '')),
+                quantity: 1
+            });
+        }
+        
+        // Update cart display
+        displayCartItems();
+    });
+});
+
+// Function to display cart items
+function displayCartItems() {
+    cartList.innerHTML = ''; // Clear existing cart items
+    
+    if (cart.length === 0) {
+        cartList.innerHTML = '<li>Your cart is empty.</li>';
+        return;
+    }
+
+    cart.forEach(item => {
+        const cartItem = document.createElement('li');
+        cartItem.innerHTML = `
+            ${item.name} - $${item.price.toFixed(2)} x ${item.quantity}
+            <button class="remove-item" data-id="${item.id}">Remove</button>
+        `;
+        cartList.appendChild(cartItem);
+    });
+
+    // Add remove functionality
+    const removeButtons = document.querySelectorAll('.remove-item');
+    removeButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const productId = event.target.getAttribute('data-id');
+            removeCartItem(productId);
+        });
+    });
+
+    // Display total price
+    const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+    const totalElement = document.createElement('p');
+    totalElement.textContent = `Total: $${totalPrice.toFixed(2)}`;
+    cartList.appendChild(totalElement);
+}
+
+// Function to remove an item from cart
+function removeCartItem(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    displayCartItems();
+}
+
 
 
   // Add event listeners to all 'Add to Cart' buttons
@@ -102,7 +180,7 @@ tl.to("#page1>h1",{
 
 
 
-
+  
 
 
 var tl1 = gsap.timeline({

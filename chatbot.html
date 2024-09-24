@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple Vision Pro Chatbot</title>
+    <link rel="stylesheet" href="bot.css">
+</head>
+<body> 
+    <!-- Chatbot Container -->
+    <div class="chat-container">
+        <h2>Ask About Apple Vision Pro</h2>
+        <div class="chat-box" id="chat-box"></div>
+        <input type="text" id="user-input" placeholder="Ask me about Apple Vision Pro...">
+        <button id="send-button">Send</button>
+    </div>
+
+    <style>
+        /* General page styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Chatbot container styling */
+        .chat-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 350px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 22px;
+        }
+
+        .chat-box {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 80px);
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .chat-message {
+            margin: 5px 0;
+        }
+
+        .user {
+            text-align: right;
+            color: blue;
+        }
+
+        .bot {
+            text-align: left;
+            color: green;
+        }
+    </style>
+
+    <script>
+        const chatBox = document.getElementById('chat-box');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+        
+        // Keyword-based responses related to Apple Vision Pro
+        const keywords = {
+            "price": "The Apple Vision Pro starts at $3,499.",
+            "cost": "Apple Vision Pro is priced at $3,499.",
+            "features": "Apple Vision Pro includes immersive 3D viewing, spatial computing, and ultra-high resolution.",
+            "availability": "Currently, Apple Vision Pro is available in the US with global availability soon.",
+            "buy": "You can purchase Apple Vision Pro from Apple's official website or authorized retailers.",
+            "vision": "Apple Vision Pro is Apple's cutting-edge AR/VR headset, designed for immersive spatial computing."
+        };
+        
+        // Additional responses to common phrases
+        const responses = {
+            "hello": "Hello! How can I assist you today with Apple Vision Pro?",
+            "how much does apple vision pro cost?": "Apple Vision Pro starts at $3,499.",
+            "what are the features of apple vision pro?": "Apple Vision Pro features immersive 3D, spatial computing, and more!",
+            "where can i buy apple vision pro?": "You can buy Apple Vision Pro from the Apple Store or select retailers.",
+            "bye": "Goodbye! Let me know if you have more questions about Vision Pro.",
+            "tell me a joke": "Why did the phone go to the gym? To get better reception!"
+        };
+
+        // Basic commands like clearing the chat
+        const commands = {
+            "clear": "Chat cleared!",
+            "reset": "Chat reset! Feel free to ask again."
+        };
+
+        sendButton.addEventListener('click', () => {
+            const userMessage = userInput.value.trim().toLowerCase();
+            
+            if (userMessage === "") {
+                alert("Please enter a question.");
+                return;
+            }
+
+            displayMessage(userMessage, 'user');
+            userInput.value = '';
+
+            if (commands[userMessage]) {
+                handleCommand(userMessage);
+            } else {
+                const botResponse = getKeywordResponse(userMessage) || getResponse(userMessage);
+                setTimeout(() => {
+                    displayMessage(botResponse, 'bot');
+                }, 500);
+            }
+        });
+
+        // Check if the message contains any of the relevant keywords
+        function getKeywordResponse(message) {
+            for (const key in keywords) {
+                if (message.includes(key)) {
+                    return keywords[key];
+                }
+            }
+            return null;
+        }
+
+        // Standard response based on predefined questions
+        function getResponse(message) {
+            for (const key in responses) {
+                if (message.includes(key)) {
+                    return responses[key];
+                }
+            }
+            return "I'm sorry, I don't have an answer for that. Try asking about price, features, or availability!";
+        }
+
+        // Function to handle chat commands like clearing or resetting chat
+        function handleCommand(command) {
+            if (command === "clear") {
+                chatBox.innerHTML = ''; // Clear chat
+                displayMessage(commands[command], 'bot');
+            } else if (command === "reset") {
+                chatBox.innerHTML = ''; // Reset chat
+                displayMessage(commands[command], 'bot');
+            }
+        }
+
+        // Function to display messages in the chatbox
+        function displayMessage(message, sender) {
+            const messageElement = document.createElement('div');
+            messageElement.textContent = message;
+            messageElement.className = `chat-message ${sender}`;
+            chatBox.appendChild(messageElement);
+            chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to the bottom of chat
+        }
+    </script>
+</body>
+</html>

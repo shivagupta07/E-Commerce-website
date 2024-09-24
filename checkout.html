@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Checkout Container */
+        #checkout {
+            background-color: #ffffff;
+            width: 40%;
+            margin: 60px auto;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Title Styling */
+        h1 {
+            color: #333333;
+            text-align: center;
+            font-weight: 500;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        h3 {
+            color: #555555;
+            font-size: 18px;
+            font-weight: 400;
+            margin: 10px 0;
+        }
+
+        /* Amount Display */
+        .amount-display {
+            font-size: 30px;
+            color: #222222;
+            font-weight: 500;
+            margin: 20px 0;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+        }
+
+        /* Button Styling */
+        button {
+            background-color: #333333;
+            color: white;
+            padding: 12px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #000000;
+        }
+
+        /* UPI ID and QR Code Section */
+        .payment-option {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        #upi-qr {
+            display: block;
+            margin: 20px auto;
+            width: 120px;
+            border-radius: 5px;
+            border: 1px solid #e0e0e0;
+        }
+
+        #copy-upi-id {
+            margin-top: 15px;
+            background-color: #555555;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        #copy-upi-id:hover {
+            background-color: #333333;
+        }
+
+        /* Timer Section */
+        #timer-section {
+            text-align: center;
+            font-size: 16px;
+            margin-top: 20px;
+            color: #777777;
+        }
+
+        /* Confirmation Message */
+        #confirmation-msg {
+            text-align: center;
+            font-size: 16px;
+            margin-top: 30px;
+            color: #4CAF50;
+        }
+
+        /* Link Styling */
+        #upi-link-section {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        #upi-link-section a {
+            color: #333333;
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 16px;
+            border-bottom: 1px solid transparent;
+            transition: border-bottom 0.3s ease;
+        }
+
+        #upi-link-section a:hover {
+            border-bottom: 1px solid #333333;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            #checkout {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="checkout">
+        <h1>Checkout</h1>
+
+        <!-- Unchangeable Amount Display -->
+        <div class="amount-display">
+            $<span id="total-amount"></span>
+        </div>
+
+        <!-- Payment Options -->
+        <div class="payment-option">
+            <h3>Pay via UPI</h3>
+            <p>UPI ID: <strong>beastboyshub1020@okicici</strong></p>
+            <button id="copy-upi-id">Copy UPI ID</button>
+
+            <h4>OR Scan the QR code</h4>
+            <img src="qr.jpg" alt="QR Code" id="upi-qr">
+            <p>Scan with GPay / PhonePe / UPI App</p>
+
+            <!-- UPI Payment URL -->
+            <p id="upi-link-section"></p>
+        </div>
+
+        <!-- Timer for Payment -->
+        <div id="timer-section">
+            <p><strong>Complete the payment within:</strong> <span id="timer">60</span> seconds</p>
+        </div>
+
+        <!-- Complete Payment Button -->
+        <button id="payment-done">Payment Completed</button>
+
+        <!-- Confirmation Message -->
+        <p id="confirmation-msg"></p>
+    </div>
+
+    <script>
+        // Timer Functionality
+        let timeLeft = 60;
+        const timer = setInterval(() => {
+            if (timeLeft > 0) {
+                timeLeft--;
+                document.getElementById("timer").innerText = timeLeft;
+            } else {
+                clearInterval(timer);
+                document.getElementById('confirmation-msg').innerText = "Payment time expired. Please try again.";
+            }
+        }, 1000);
+
+        // Get the total amount from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const amount = urlParams.get('amount');
+
+        if (amount) {
+            // Display the amount in dollars ($)
+            document.getElementById('total-amount').innerText = amount;
+        }
+
+        // Copy UPI ID functionality
+        document.getElementById('copy-upi-id').addEventListener('click', function () {
+            const upiID = "your-upi-id@upi";
+            navigator.clipboard.writeText(upiID).then(() => {
+                alert("UPI ID copied to clipboard!");
+            });
+        });
+
+        // Generate UPI link
+        function generateUpiLink(amount) {
+            const upiId = "your-upi-id@upi";
+            return `upi://pay?pa=${upiId}&pn=Your+Name&am=${amount}&cu=USD`;
+        }
+
+        // Payment completed button functionality
+        document.getElementById('payment-done').addEventListener('click', function () {
+            if (amount) {
+                document.getElementById('confirmation-msg').innerText = `Thank you! Your payment of $${amount} has been received.`;
+
+                // Generate UPI Payment URL
+                const upiLink = generateUpiLink(amount);
+                document.getElementById('upi-link-section').innerHTML = `<a href="${upiLink}">Click here to pay $${amount} via UPI</a>`;
+            }
+        });
+    </script>
+
+</body>
+
+</html>

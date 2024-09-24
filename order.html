@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History & Tracking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Nav Bar -->
+    <nav>
+        <h3>Vision Pro</h3>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#product-page">Products</a></li>
+            <li><a href="index.html#about-us-page">About Us</a></li>
+            <li><a href="index.html#contact-page">Contact</a></li>
+            <li><a href="order.html">Orders</a></li>
+        </ul>
+    </nav>
+
+    <!-- Orders Section -->
+    <div class="order-container">
+        <h1>Your Order History</h1>
+        <div class="order-list">
+            <!-- Order 1 -->
+            <div class="order-item">
+                <img src="product1.jpg" alt="Vision Pro" class="product-image">
+                <div class="order-details">
+                    <h3>Order #123456</h3>
+                    <p>Product: Vision Pro Headset</p>
+                    <p>Date: 2023-09-22</p>
+                    <p>Total: $3,499.00</p>
+                    <p>Status: Shipped</p>
+                    <a href="#" class="track-order">Track Order</a>
+                </div>
+            </div>
+
+            <!-- Order 2 -->
+            <div class="order-item">
+                <img src="bud.jpg" alt="AirPods" class="product-image">
+                <div class="order-details">
+                    <h3>Order #123457</h3>
+                    <p>Product: Apple AirPods Pro</p>
+                    <p>Date: 2023-09-20</p>
+                    <p>Total: $199.00</p>
+                    <p>Status: Delivered</p>
+                    <a href="#" class="view-order">View Details</a>
+                </div>
+            </div>
+
+            <!-- Order 3 -->
+            <div class="order-item">
+                <img src="iphone.jpg" alt="iPhone 15" class="product-image">
+                <div class="order-details">
+                    <h3>Order #123458</h3>
+                    <p>Product: iPhone 15</p>
+                    <p>Date: 2023-09-19</p>
+                    <p>Total: $299.00</p>
+                    <p>Status: Processing</p>
+                    <a href="#" class="cancel-order">Cancel Order</a>
+                </div>
+            </div>
+
+            <!-- Order 4 -->
+            <div class="order-item">
+                <img src="watch.jpg" alt="Apple Watch" class="product-image">
+                <div class="order-details">
+                    <h3>Order #123459</h3>
+                    <p>Product: Apple Watch Series 9</p>
+                    <p>Date: 2023-09-15</p>
+                    <p>Total: $99.00</p>
+                    <p>Status: Delivered</p>
+                    <a href="#" class="view-order">View Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CSS for the Orders Page -->
+    <style>
+        .order-container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .order-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .order-item {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .product-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-right: 20px;
+            border-radius: 10px;
+        }
+
+        .order-details {
+            flex-grow: 1;
+        }
+
+        .order-item h3 {
+            margin-top: 0;
+        }
+
+        .track-order, .view-order, .cancel-order {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .track-order:hover, .view-order:hover, .cancel-order:hover {
+            text-decoration: underline;
+        }
+    </style>
+</body>
+</html>
