@@ -99,23 +99,75 @@
         
         // Keyword-based responses related to Apple Vision Pro
         const keywords = {
-            "price": "The Apple Vision Pro starts at $3,499.",
-            "cost": "Apple Vision Pro is priced at $3,499.",
-            "features": "Apple Vision Pro includes immersive 3D viewing, spatial computing, and ultra-high resolution.",
-            "availability": "Currently, Apple Vision Pro is available in the US with global availability soon.",
-            "buy": "You can purchase Apple Vision Pro from Apple's official website or authorized retailers.",
-            "vision": "Apple Vision Pro is Apple's cutting-edge AR/VR headset, designed for immersive spatial computing."
-        };
-        
-        // Additional responses to common phrases
-        const responses = {
-            "hello": "Hello! How can I assist you today with Apple Vision Pro?",
-            "how much does apple vision pro cost?": "Apple Vision Pro starts at $3,499.",
-            "what are the features of apple vision pro?": "Apple Vision Pro features immersive 3D, spatial computing, and more!",
-            "where can i buy apple vision pro?": "You can buy Apple Vision Pro from the Apple Store or select retailers.",
-            "bye": "Goodbye! Let me know if you have more questions about Vision Pro.",
-            "tell me a joke": "Why did the phone go to the gym? To get better reception!"
-        };
+    "price": "The Apple Vision Pro starts at $3,499.",
+    "cost": "Apple Vision Pro is priced at $3,499.",
+    "features": "Apple Vision Pro includes immersive 3D viewing, spatial computing, and ultra-high resolution.",
+    "availability": "Currently, Apple Vision Pro is available in the US with global availability soon.",
+    "buy": "You can purchase Apple Vision Pro from Apple's official website or authorized retailers.",
+    "vision": "Apple Vision Pro is Apple's cutting-edge AR/VR headset, designed for immersive spatial computing.",
+    "battery": "Apple Vision Pro offers up to 2 hours of continuous use with its external battery pack.",
+    "specs": "Apple Vision Pro includes dual 4K displays, M2 chip, and a custom R1 chip for real-time processing.",
+    "compatibility": "Apple Vision Pro is compatible with most Apple devices, including iPhone, iPad, and Mac.",
+    "warranty": "Apple Vision Pro comes with a 1-year limited warranty, with optional AppleCare+.",
+    "pre-order": "You can pre-order Apple Vision Pro through the official Apple Store starting in early 2024.",
+    "apps": "Apple Vision Pro supports various AR and VR apps, designed for productivity, gaming, and entertainment.",
+    "refresh rate": "Apple Vision Pro has a 90Hz refresh rate for smooth visuals.",
+    "gaming": "Yes, Vision Pro is designed for gaming and supports a variety of games.",
+    "controllers": "Vision Pro supports external controllers via Bluetooth.",
+    "glasses": "Apple Vision Pro is designed to work with glasses using custom optical inserts.",
+    "data security": "Apple Vision Pro uses secure on-device data processing, ensuring your data stays private.",
+    "waterproof": "Apple Vision Pro is not waterproof, so avoid exposure to water.",
+    "weight": "Apple Vision Pro weighs around 600 grams, designed to be lightweight for long sessions.",
+    "productivity": "Yes, Vision Pro supports productivity apps, allowing you to work in immersive environments.",
+    "connectivity": "Apple Vision Pro supports Wi-Fi 6E and Bluetooth 5.3 for fast, reliable connectivity.",
+    "5g": "Currently, Apple Vision Pro does not support 5G directly but can connect to 5G-enabled devices.",
+    "mac": "You can connect Apple Vision Pro to your Mac for enhanced work and creative experiences.",
+    "microphone": "Yes, Apple Vision Pro has built-in microphones for voice commands and calls.",
+    "field of view": "Apple Vision Pro offers a wide field of view for immersive experiences.",
+    "vr comparison": "Apple Vision Pro offers superior hardware and spatial computing features compared to Meta Quest and HoloLens.",
+    "eye tracking": "Yes, Vision Pro includes advanced eye-tracking technology for intuitive control.",
+    "iphone compatibility": "Yes, you can pair your iPhone with Vision Pro for various features and experiences.",
+    "resolution": "Apple Vision Pro features dual 4K micro-OLED displays for incredible clarity.",
+    "virtual meetings": "Yes, Vision Pro supports virtual meetings with FaceTime and other apps.",
+    "continuous use": "Apple Vision Pro offers up to 2 hours of battery life, or you can connect it to power for extended use.",
+    "3d movies": "Yes, Vision Pro supports 3D content, making it perfect for immersive movie-watching experiences.",
+    "multiple users": "Apple Vision Pro is designed for single-user experiences but can switch between users.",
+    "motion sickness": "Apple Vision Pro's smooth visuals and high refresh rate reduce the likelihood of motion sickness.",
+    "developer friendly": "Vision Pro is great for developers, offering support for building AR/VR apps and spatial computing environments.",
+    "wired connection": "Apple Vision Pro primarily works wirelessly but can connect to power or accessories via cables.",
+    "storage": "Apple Vision Pro comes with 256GB of internal storage.",
+    "non-apple devices": "Apple Vision Pro is primarily designed for Apple ecosystem devices but may work with some non-Apple accessories.",
+    "parental controls": "Yes, Apple Vision Pro has parental control features to manage content for kids.",
+    "privacy": "Vision Pro uses secure facial recognition and ensures your data stays on-device for privacy.",
+    "outdoors": "Vision Pro is not ideal for bright outdoor environments due to the display type, but can be used in certain conditions.",
+    "travel": "Yes, you can use Vision Pro while traveling, but it is not intended for use while in motion (like in cars or planes).",
+    "subscription": "While Vision Pro doesn't require a subscription, some apps and services may have their own fees.",
+    "sound system": "Apple Vision Pro features spatial audio for an immersive sound experience."
+};
+
+const responses = {
+    "hello": "Hello! How can I assist you today with Apple Vision Pro?",
+    "how much does apple vision pro cost?": "Apple Vision Pro starts at $3,499.",
+    "what are the features of apple vision pro?": "Apple Vision Pro features immersive 3D, spatial computing, and more!",
+    "where can i buy apple vision pro?": "You can buy Apple Vision Pro from the Apple Store or select retailers.",
+    "what are the technical specifications?": "Apple Vision Pro includes dual 4K displays, M2 chip, custom R1 chip, and 12 cameras for real-time spatial tracking.",
+    "how long does the battery last?": "The external battery provides up to 2 hours of continuous use, with the option to connect to a power source for extended sessions.",
+    "what devices is vision pro compatible with?": "Apple Vision Pro works seamlessly with other Apple devices like iPhone, iPad, and Mac.",
+    "what is the refresh rate of apple vision pro?": "Apple Vision Pro offers a 90Hz refresh rate, providing smooth and responsive visuals.",
+    "can i use vision pro for gaming?": "Yes, Vision Pro is designed for gaming and offers a wide range of compatible games.",
+    "does vision pro support external controllers?": "Yes, you can connect external controllers to Vision Pro via Bluetooth.",
+    "does vision pro work with glasses?": "Yes, Vision Pro can be used with custom optical inserts for glasses wearers.",
+    "is vision pro waterproof?": "No, Apple Vision Pro is not waterproof and should be kept away from water.",
+    "how much does vision pro weigh?": "Apple Vision Pro weighs around 600 grams, making it lightweight and comfortable for extended use.",
+    "can i use vision pro for work?": "Yes, Vision Pro supports various productivity apps, allowing you to work in immersive environments.",
+    "what is the field of view?": "Apple Vision Pro offers a wide field of view for immersive experiences, though specific degrees are not disclosed.",
+    "how secure is my data on vision pro?": "Your data is processed on-device, ensuring that your privacy and security are maintained.",
+    "does apple vision pro have a microphone?": "Yes, Apple Vision Pro includes built-in microphones for voice commands, calls, and interactions.",
+    "does apple vision pro support eye tracking?": "Yes, Apple Vision Pro includes advanced eye-tracking technology for intuitive interaction.",
+    "what is the resolution of the display?": "Vision Pro features dual 4K micro-OLED displays for an ultra-clear viewing experience.",
+    "bye": "Goodbye! Let me know if you have more questions about Vision Pro.",
+    "tell me a joke": "Why did the phone go to the gym? To get better reception!"
+};
 
         // Basic commands like clearing the chat
         const commands = {
